@@ -23,4 +23,10 @@ class MoviesController < ApplicationController
     flash[:notice] = "#{@movie.title} was successfully created."
     redirect_to movies_path
   end
+
+  def edit
+    @movie = Movie.find params[:id]
+    # will render app/views/movies/edit.html.haml
+  end
+
 end
