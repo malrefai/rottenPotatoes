@@ -1,4 +1,3 @@
-
 class MoviesController < ApplicationController
 
   def index
@@ -6,7 +5,9 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movies = nil
+    id = params[:id] # retrieve movie ID from URI route
+    @movie = Movie.find(id) # look up movie by unique ID
+    # will render app/views/movies/show.html.haml
   end
 
 end
