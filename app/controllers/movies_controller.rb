@@ -29,4 +29,11 @@ class MoviesController < ApplicationController
     # will render app/views/movies/edit.html.haml
   end
 
+  def update
+    @movie = Movie.find params[:id]
+    @movie.update_attributes!(movie_params)
+    flash[:notice] = "#{@movie.title} was successfully updated."
+    redirect_to movie_path(@movie)
+  end
+
 end
