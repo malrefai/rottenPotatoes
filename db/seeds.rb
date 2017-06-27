@@ -18,4 +18,4 @@ more_movies = [
 # (need if you  used attr_accessible/attr_protected in movie.rb)
 # Movie.send(:attr_accessible, :title, :rating, :release_date)
 
-more_movies.each {|movie| Movie.create!(movie)}
+more_movies.each { |movie| Movie.create!(movie) }
