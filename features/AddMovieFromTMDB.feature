@@ -10,4 +10,4 @@ Feature: User can add movie by searching for it in The Movie Database (TMDb)
     When | I fill in "Search Terms" with "Movie That Does Not Exist"
     And | I press "Search TBDb"
     Then | I should be on the rottenPotatoes home page
-    And | I should see "'Movie That Does Not Exist' was not found in TMDb."
+    And | I should see "'Movie That Does Not Exist' was not found in TMDb"
