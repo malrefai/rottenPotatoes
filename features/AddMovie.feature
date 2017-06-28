@@ -1,11 +1,6 @@
-Feature: User can manually add movie
+Feature: Allow rottenPotatoes user to add a new movie
 
-  Scenario: Add a movie
-    Given | I am on the rottenPotatoes home page
-    When | I follow "Add new movie"
-    Then | I should be on the Create New Movie page
-    When | I fill in "Title" with "Men in Black"
-    And | I select "PG-13" from "Rating"
-    And | I press "Save Changes"
-    Then | I should be on the rottenPotatoes home page
-    And | I should see "Men in Black"
+  Scenario:  Add a new movie (Declarative)
+    When I have added a movie with title "Men in Black" and rating "PG-13"
+    And I am on the rottenPotatoes home page
+    Then I should see a movie list entry with title "Men in Black" and rating "PG-13"

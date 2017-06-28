@@ -40,6 +40,6 @@ When /^I have attempted to add a non\-existent movie "(.*?)" from TMDb$/ do |mov
 end
 
 Then /^I should see "(.*?)" was not found in TMDb\."$/ do |movie|
-  str = "\'#{movie}\' was not found in TMDb."
+  str = "'#{movie}' was not found in TMDb."
   expect(page).to have_content(str)
 end
