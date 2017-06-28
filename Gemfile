@@ -25,6 +25,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Use Haml for templates
+gem 'haml'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -47,8 +54,18 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem 'rspec-expectations'
+  # BDD cucumber tool
+  gem 'cucumber-rails', :require=>false
+  # Some prefabbed step definitions
+  gem 'cucumber-rails-training-wheels'
+  # To clear cucumber's test database between runs
+  gem 'database_cleaner'
+  # Lets cucumber pretend to be a web browser
+  gem 'capybara'
+  # A useful debugging aid for user stories
+  gem 'launchy'
+end
 
-# Use Haml for templates
-gem 'haml'
+
