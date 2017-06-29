@@ -32,6 +32,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use Haml for templates
 gem 'haml'
 
+# Use The movie Database
+gem 'themoviedb'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -43,21 +46,25 @@ gem 'haml'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  # Rspec
+  gem 'rspec-rails'
+  gem 'guard-rspec'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
+  # Rspec expectations
   gem 'rspec-expectations'
   # BDD cucumber tool
-  gem 'cucumber-rails', :require=>false
+  gem 'cucumber-rails', :require => false
   # Some prefabbed step definitions
   gem 'cucumber-rails-training-wheels'
   # To clear cucumber's test database between runs
