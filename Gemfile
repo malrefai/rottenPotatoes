@@ -52,6 +52,7 @@ group :development, :test do
   # Rspec
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'rails-controller-testing'
 end
 
 group :development do
