@@ -11,7 +11,7 @@ class Movie < ActiveRecord::Base
 
   def self.find_in_tmdb(string)
     begin
-      if Tmdb::Movie.find(string) != nil
+      unless Tmdb::Movie.find(string).nil?
         moviesList=[]
         movieRating = nil
         Tmdb::Movie.find(string).each do |movie|
