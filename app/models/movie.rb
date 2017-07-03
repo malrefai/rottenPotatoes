@@ -4,6 +4,15 @@ class Movie < ActiveRecord::Base
     %w(G PG PG-13 NC-17 R)
   end
 
+  validates :title, presence: true
+  validates :release_date, presence: true
+  validates :rating, inclusion: {in: self.all_ratings}
+  validate :released_1930_or_later
+  
+  def released_1930_or_later
+    errors.add(:release_date, 'must be 1930 or later') if self.release_date < Date.parse('1 Jan 1930')
+  end
+
   class Movie::InvalidKeyError < StandardError
   end
 
@@ -40,5 +49,21 @@ class Movie < ActiveRecord::Base
       rating = "NR"
     end
     return rating
+  end
+
+  def self.create_from_tmdb(tmdb_id)
+    begin
+      movieInfo = Tmdb::Movie.detail(tmdb_id)
+      unless movieInfo.nil?
+        rating = getRating(tmdb_id)
+        if rating.to_s.strip.length.zero?
+          rating = "NR"
+        end
+      end
+      return Movie.create!(:title => movieInfo["title"], :rating => rating,
+                           :description => movieInfo["overview"], :release_date => movieInfo["release_date"])
+    rescue Tmdb::InvalidApiKeyError
+      raise Movie::InvalidKeyError, 'Invalid ID'
+    end
   end
 end
