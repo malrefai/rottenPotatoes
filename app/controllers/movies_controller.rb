@@ -24,7 +24,6 @@ class MoviesController < ApplicationController
       flash[:notice] = "#{@movie.title} was successfully created."
       redirect_to movies_path
     else
-      flash[:warning] = "Cannot create movie, #{@movie.errors.full_messages}"
       render 'new'
     end
   end
@@ -40,7 +39,6 @@ class MoviesController < ApplicationController
       flash[:notice] = "#{@movie.title} was successfully updated."
       redirect_to movie_path(@movie)
     else
-      flash[:warning] = "Cannot update #{@movie.title}, #{@movie.errors.full_messages}"
       render 'edit'
     end
   end

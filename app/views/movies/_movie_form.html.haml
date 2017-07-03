@@ -1,3 +1,10 @@
+- unless @movie.nil?
+  - unless @movie.errors.empty?
+    Error prevented this movie form being #{controller.action_name}d:
+    %ul
+      - @movie.errors.full_messages.each do |error|
+        %li= error
+
 = label :movie, :title, 'Title'
 = text_field :movie, :title
 
